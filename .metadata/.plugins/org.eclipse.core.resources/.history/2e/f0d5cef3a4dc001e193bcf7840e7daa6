@@ -1,0 +1,137 @@
+package net.codejava.registration.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.codejava.registration.model.Books;
+import net.codejava.registration.dao.BooksDao;
+
+/**
+ * Servlet implementation class BooksServlet
+ */
+@WebServlet("/")
+public class BooksServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private BooksDao booksDao;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BooksServlet() {
+        this.booksDao = new BooksDao();
+        // TODO Auto-generated constructor stub
+    }
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String action = request.getServletPath();
+		
+		switch(action) {
+		case "/new":
+			showNewForm(request, response);
+			break;
+		case "/insert":
+			try {
+				insertUser(request, response);
+			} catch (SQLException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "/delete":
+			try {
+				deleteBook(request, response);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "/edit":
+			
+			showEditForm(request, response);
+			break;
+		case "/update":
+			try {
+				updateUser(request, response);
+			} catch (SQLException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void listBook(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, SQLException{
+		List<Books> listBook = booksDao.selectAllBooks();
+		
+	}
+	
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		int id = Integer.parseInt(request.getParameter("id"));
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String description = request.getParameter("description");
+		String category = request.getParameter("category");
+		boolean isAvailable = Boolean.parseBoolean(request.getParameter("availability"));
+		
+		Books book = new Books(title, author, description, category, isAvailable);
+		booksDao.updateBookInfo(book);
+		response.sendRedirect("list");
+		
+	}
+	
+	private void deleteBook(HttpServletRequest request, HttpServletResponse response)throws IOException, SQLException{
+		int id = Integer.parseInt(request.getParameter("id"));
+		booksDao.deleteBook(id);
+		response.sendRedirect("list");
+	}
+	
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		int id = Integer.parseInt(request.getParameter("id"));
+		Books existingBook = booksDao.selectBook(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("bookform.jsp");
+		request.setAttribute("book", existingBook);
+		dispatcher.forward(request, response);
+	}
+	
+	
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("bookform.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void insertUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String description = request.getParameter("description");
+		String category = request.getParameter("category");
+		boolean isAvailable = Boolean.parseBoolean(request.getParameter("availability"));
+		
+		Books newBook = new Books(title,author,description,category, isAvailable);
+		booksDao.createBook(newBook);
+		response.sendRedirect("list");
+		
+	}
+
+
+}

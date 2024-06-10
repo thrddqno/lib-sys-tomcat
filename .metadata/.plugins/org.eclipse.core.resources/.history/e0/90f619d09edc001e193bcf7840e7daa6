@@ -1,0 +1,80 @@
+package net.codejava.registration.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.codejava.registration.model.Books;
+import net.codejava.registration.dao.BooksDao;
+
+/**
+ * Servlet implementation class BooksServlet
+ */
+public class BooksServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BooksServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String action = request.getServletPath();
+		
+		switch(action) {
+		case "/new":
+			showNewForm(request, response);
+			break;
+		case "/insert":
+			break;
+		case "/delete":
+			break;
+		case "/edit":
+			break;
+		case "/update":
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("createbook.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void insertUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException{
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String description = request.getParameter("description");
+		String category = request.getParameter("category");
+		String isAvlStr = request.getParameter("availability");
+		boolean isAvailable = Boolean.parseBoolean(isAvlStr);
+		
+		Books newBook = new Books(title,author,description,category, isAvailable);
+		BooksDao.createBook(newBook);
+		response.sendRedirect("list");
+		
+	}
+
+
+}

@@ -1,0 +1,183 @@
+:root {
+  --main-bg-color: #605739;
+  --main-text-color: #605739;
+  --second-text-color: #c6bfa4;
+  --second-bg-color: #c1efde;
+  
+  --secondary10: hsl(48, 27%, 50%, 10%);
+  --secondary15: hsl(48, 27%, 50%, 15%);
+  --secondary20: hsl(48, 27%, 50%, 20%);
+  --secondary25: hsl(48, 27%, 50%, 25%);
+  --secondary30: hsl(48, 27%, 50%, 30%);
+}
+
+.primary-text {
+  color: var(--main-text-color);
+  font-family: "GeneralSans-Bold", sans-serif;
+}
+
+.second-text {
+  color: var(--second-text-color);
+  font-family: "GeneralSans-Medium", sans-serif;
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.secondary20-bg {
+  background-color: var(--secondary20);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+.card-title {
+	font-size: 23px;
+	font-weight:700;
+	color: #605739;
+	text-decoration: none;
+	margin: 0; /* Hide overflowing content */
+  	white-space: nowrap; /* Prevent text wrapping */
+  	max-height: 4rem; /* Set a maximum height (adjust as needed) */
+}
+.booksAvailable{
+	text-align: center;
+}
+
+.isAvailable {
+	padding: 10px 15px;
+	border-radius: 35px;
+	background-color: green;
+	color: white;
+}
+
+.card-text {
+	color: #060a05;
+	overflow: hidden; /* Hide overflowing content */
+  	text-overflow: ellipsis; /* Add ellipsis (...) for truncated text */
+  	white-space: nowrap; /* Prevent text wrapping */
+  	max-height: 3rem; /* Set a maximum height (adjust as needed) */
+}
+.author {
+	color: rgba(6, 10, 5, 0.6);
+	font-size: 13px;
+}
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  position: fixed;
+  z-index: 1000; /* Ensure sidebar appears above other content */
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+  
+}
+
+#page-content-wrapper {
+  width: calc(100vw - 240px);
+  margin-left:240px;
+}
+
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+.container-card{
+	padding:5%;
+	min-height: 100vh;
+	margin-bottom: 5%;
+}
+
+.card-img-top{
+	border-radius: 50px;
+	padding: 20px;
+
+}
+
+.card{
+	border-radius: 30px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.card-body{
+	padding: 25px;
+	margin-top: -15px;
+	text-overflow: ellipsis;
+}
+
+.pagination-wrapper {
+	margin-left:240px;
+	position: fixed;
+  	bottom: 0;
+	right:0;
+	width: 100%;
+}
+
+
+.myform {
+	padding:1.25rem;
+	background: transparent;
+	max-width: 100%;
+	box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+}
+
+.modal-body {
+  padding: 0;
+
+}
+
+.form-label {
+	color: black;
+}
+
+.modal-body, .myform, .modal-content{
+	border-radius:35px;
+}
+
+.btn-save {
+	background-color: var(--main-bg-color);
+	color: white;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+}
+
+.modal-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-desc {
+	overflow: hidden; /* Hide overflowing content */
+  	text-overflow: ellipsis; /* Add ellipsis (...) for truncated text */
+  	max-height: 4rem; /* Set a maximum height (adjust as needed) */
+}

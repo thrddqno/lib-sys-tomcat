@@ -1,0 +1,15 @@
+net\codejava\registration\dao\UserDao.class
+net\codejava\registration\controller\GetBookServlet.class
+net\codejava\registration\model\BookIssuance.class
+net\codejava\registration\controller\LogoutServlet.class
+net\codejava\registration\controller\RentBookServlet.class
+net\codejava\registration\controller\RegisterServlet.class
+net\codejava\registration\dao\BooksDao.class
+net\codejava\registration\model\Books.class
+net\codejava\registration\controller\UserBookListServlet.class
+net\codejava\registration\controller\ViewBookServlet.class
+net\codejava\registration\controller\BookListServlet.class
+net\codejava\registration\controller\BookFormServlet.class
+net\codejava\registration\controller\LoginServlet.class
+net\codejava\registration\model\User.class
+net\codejava\registration\controller\BookDeleteServlet.class

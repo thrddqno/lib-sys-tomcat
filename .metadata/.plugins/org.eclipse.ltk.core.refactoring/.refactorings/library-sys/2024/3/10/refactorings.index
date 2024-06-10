@@ -1,0 +1,25 @@
+1709715178417	Rename resource 'SignUp.jsp'
+1709715182670	Rename resource 'Log In.jsp'
+1709715187469	Rename resource 'Landing.jsp'
+1709725538213	Rename type 'UserServlet'
+1709725669491	Rename field 'loginDao'
+1709733739870	Delete element
+1709738946303	Delete element
+1709738953104	Rename resource 'LoginPage.jsp'
+1709740588501	Rename resource 'landing.jsp'
+1709740591711	Rename resource 'Admin'
+1709740596013	Rename resource 'User'
+1709740599629	Rename resource 'Home.jsp'
+1709740603565	Rename resource 'Home.jsp'
+1709743334418	Delete element
+1709751495034	Delete element
+1709761292176	Rename resource 'admincss.css'
+1709825999347	Delete element
+1709830334395	Rename method 'deleteUser'
+1709877663590	Rename resource 'NewFile.jsp'
+1709905221333	Rename type 'BooksServlet'
+1709914682215	Delete element
+1709925632020	Rename resource 'admin-books.css'
+1709957011982	Rename resource 'userlandingpage.html'
+1709957207763	Rename resource 'userlandingpage.css'
+1709958325476	Rename resource 'home.jsp'
